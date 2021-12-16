@@ -7,7 +7,8 @@ import Routers from "./Routers";
 function App() {
 
     useEffect(()=> {
-        window.history.pushState(null, '', '/main')
+        window.location.pathname === '/'
+            && window.history.pushState(null, '', '/main')
     }, [])
 
   return (
