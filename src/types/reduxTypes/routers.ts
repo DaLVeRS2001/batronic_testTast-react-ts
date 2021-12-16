@@ -1,3 +1,10 @@
+export interface IRouter  {
+    route: string
+    nodes: Node[]
+    title: string
+}
+type Node = IRouter
+
 export enum RoutersActionTypes{
     TEST= 'TEST'
 }
@@ -8,7 +15,7 @@ interface ITestAction{
 }
 
 export interface IRoutersState{
-    routers: { route: string, nodes: string[], title: string }[]
+    routers: IRouter[]
 }
 
 export type RoutersActions = ITestAction

@@ -4,7 +4,12 @@ import {IRoutersState, RoutersActions, RoutersActionTypes} from "../../types/red
 
 const initialState: IRoutersState = {
     routers: [
-        { route: '/main', nodes: [], title:'Main' }
+        { route: '/main0', nodes: [
+                { route: '/main01/main01', nodes: [{ route: '/main01/main01/main03', nodes: [], title: 'Main01' }], title: 'Main01' },
+                { route: '/main01/main02', nodes: [], title: 'Main02' }
+            ], title: 'Main0' },
+        { route: '/main1', nodes: [], title: 'Main1' },
+        { route: '/main2', nodes: [], title: 'Main2' }
     ]
 }
 
