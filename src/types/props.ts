@@ -17,6 +17,9 @@ export interface IInputProps {
     required?: boolean | string
     name: Path<IFormInput>
     error?: FieldError
+    nodes: IRouter[]
 }
 
-export interface ICustomForm{}
+export interface ICustomForm{
+    nodes: IRouter[]
+}

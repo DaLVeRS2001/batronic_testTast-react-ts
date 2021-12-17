@@ -1,1 +1,28 @@
- .customNode{}
+@import '../../style/assets';
+
+.customNode{
+  background: #1860fc;
+  @include adaptiveValue('padding', 50, 10, 3);
+  @include adaptiveValue('font-size', 22, 12, 1);
+  &[data-isnodes="true"]{ background: #42f819 }
+
+  h1{ @include adaptiveValue('font-size', 42, 16, 1) }
+  h3{ @include adaptiveValue('font-size', 32, 16, 1) }
+  button{ @include adaptiveValue('font-size', 22, 12, 1) }
+  input{
+    @include adaptiveValue('font-size', 22, 12, 1);
+    @include adaptiveValue('max-width', 400, 150, 1);
+  }
+
+   main{
+     form{
+       div{
+         display: flex;
+         flex-direction: column;
+         margin-bottom: 10px
+       }
+     }
+   }
+
+   footer{ a{ margin-right: 20px } }
+ }

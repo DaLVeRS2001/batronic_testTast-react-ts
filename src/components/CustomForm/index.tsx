@@ -1,12 +1,11 @@
 import {FC} from "react";
-//import style from "./style.module.scss"
 import {SubmitHandler, useForm} from "react-hook-form";
 import {ICustomForm, IFormInput} from "../../types/props";
 import Input from "../Input";
 
 
 
-const CustomForm: FC<ICustomForm> = ({}) => {
+const CustomForm: FC<ICustomForm> = ({nodes}) => {
     const {formState: {errors}, register, reset, handleSubmit} = useForm<IFormInput>()
 
     const onSubmit: SubmitHandler<IFormInput> = data => {
@@ -15,15 +14,15 @@ const CustomForm: FC<ICustomForm> = ({}) => {
     }
 
     return <form onSubmit={handleSubmit(onSubmit)}>
-       <Input
-           error={errors.title} name={'title'} register={register}
-           required={'Обезательное поле'} label={'Title'}
-       />
-       <Input
-           error={errors.route} name={'route'} register={register}
-           required={'Обезательное поле'} label={'Route'}
-       />
-       <button>Submit</button>
+        <Input
+            error={errors.title} name={'title'} register={register}
+            required={'Обезательное поле'} label={'Title'} nodes={nodes}
+        />
+        <Input
+            error={errors.route} name={'route'} register={register}
+            required={'Обезательное поле'} label={'Route'} nodes={nodes}
+        />
+        <button>Submit</button>
     </form>
 }
 
