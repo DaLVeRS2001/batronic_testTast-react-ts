@@ -12,14 +12,19 @@
   input{
     @include adaptiveValue('font-size', 22, 12, 1);
     @include adaptiveValue('max-width', 400, 150, 1);
+    border: 1px solid #000000;
   }
 
    main{
      form{
        div{
-         display: flex;
-         flex-direction: column;
-         margin-bottom: 10px
+         position: relative;
+         @include toFD(column);
+         margin-bottom: 25px;
+         small{
+           position: absolute;
+           bottom: -20px;
+         }
        }
      }
    }

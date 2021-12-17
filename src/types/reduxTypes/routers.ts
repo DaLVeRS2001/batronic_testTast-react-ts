@@ -6,12 +6,12 @@ export interface IRouter  {
 type Node = IRouter
 
 export enum RoutersActionTypes{
-    TEST= 'TEST'
+    ADD_NODE= 'ADD_NODE'
 }
 
 interface ITestAction{
-    type: RoutersActionTypes.TEST
-    payload: string
+    type: RoutersActionTypes.ADD_NODE
+    payload: IRouter
 }
 
 export interface IRoutersState{

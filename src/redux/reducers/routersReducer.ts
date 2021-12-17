@@ -1,50 +1,26 @@
 import produce from "immer";
 import {IRoutersState, RoutersActions, RoutersActionTypes} from "../../types/reduxTypes/routers";
+import {findItemNested, getPathFirstPart} from "../../utils/someMethods";
 
 
 const initialState: IRoutersState = {
     routers: [
         {
             route: '/main',
-            nodes: [
-                {
-                    route: '/main/main01',
-                    nodes: [
-                        {
-                            route: '/main01/main01/main03',
-                            nodes: [],
-                            title: 'Main01-01-03'
-                        }
-                    ],
-                    title: 'Main01-01'
-                },
-                {
-                    route: '/main01/main01/main01',
-                    nodes: [
-                        {
-                            route: '/main01/main01/main03',
-                            nodes: [],
-                            title: 'Main01-01-03'
-                        }
-                    ],
-                    title: 'Main01-01-01'
-                }
-            ],
-            title: 'Main'
-        },
-        {
-            route: '/main2',
             nodes: [],
-            title: 'Main2',
+            title: 'Main'
         }
     ]
 }
 
 const routersReducer = (state = initialState , action: RoutersActions): IRoutersState => {
     switch (action.type){
-        case RoutersActionTypes.TEST:
-            return produce(state, draft => {
-
+        case RoutersActionTypes.ADD_NODE:
+            return produce(state, (draft) => {
+               findItemNested(
+                   draft.routers,
+                   getPathFirstPart(action.payload.route), "nodes", action.payload
+               )
             })
         default:
             return state

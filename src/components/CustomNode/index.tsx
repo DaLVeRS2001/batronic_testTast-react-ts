@@ -6,13 +6,16 @@ import { Link } from "react-router-dom";
 
 
 
-const CustomNode: FC<ICustomNode> = ({title, nodes}) => {
+const CustomNode: FC<ICustomNode> = ({title, nodes, rootNode}) => {
+    const toBackHistory = () => window.history.back()
 
 
-    return <div data-isnodes={!!nodes.length} className={style.customNode} >
+    return <div data-isnodes={!!nodes.length} className={style.customNode}>
         <header>
             <h1>{title}</h1>
-            <button>Go to the parent node</button>
+            <button disabled={!!rootNode} onClick={toBackHistory}>
+                Go to the parent node
+            </button>
         </header>
 
         <main>

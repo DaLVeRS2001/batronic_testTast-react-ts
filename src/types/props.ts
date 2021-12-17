@@ -4,6 +4,7 @@ import {FieldError, Path, UseFormRegister} from "react-hook-form";
 export interface ICustomNode{
     title: string
     nodes: IRouter[]
+    rootNode?: boolean
 }
 
 export interface IFormInput{
@@ -22,4 +23,5 @@ export interface IInputProps {
 
 export interface ICustomForm{
     nodes: IRouter[]
+    addNode: (node: IRouter)=> void
 }

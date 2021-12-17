@@ -7,28 +7,26 @@ import {ReactNode} from "react";
 const Routers = () => {
     const routers = useTypedSelector(state => state.routers.routers)
 
-    const returnNode = (node: IRouter): ReactNode => {
-        console.log('111111111111111111')
-        return  <Route
+    const returnNode = (node: IRouter, rootNode?: boolean): ReactNode => {
+        return <Route
             key={node.route}
             path={node.route}
-            element={<CustomNode title={node.title} nodes={node.nodes}/>}
+            element={<CustomNode title={node.title} rootNode={rootNode} nodes={node.nodes}/>}
         />
     }
 
-
-    const returnRoute = (router: IRouter ): ReactNode[] => {
+    const returnRoute = (router: IRouter): ReactNode[] => {
         const nodes: IRouter[] = router.nodes
-        if(nodes.length) return nodes.map((node, idx) => {
-            if(!idx) return [returnNode(router), returnNode(node), returnRoute(node)]
-            return [returnNode(node)]
+        if (nodes.length) return nodes.map((node, idx) => {
+            if (!idx) return [returnNode(router, true), returnNode(node), returnRoute(node)]
+            return [returnNode(node), returnRoute(node)]
         })
-        return [returnNode(router)]
+        return [returnNode(router, true)]
     }
 
 
     return <Routes>
-        {routers.map(router=> returnRoute(router))}
+        {routers.map((router) => returnRoute(router))}
     </Routes>
 }
 

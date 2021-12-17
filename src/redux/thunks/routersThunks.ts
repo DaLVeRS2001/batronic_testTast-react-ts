@@ -1,8 +1,8 @@
 import {TDefaultAC} from "../../types/utils";
 import {Dispatch} from "redux";
-import {RoutersActions, RoutersActionTypes} from "../../types/reduxTypes/routers";
+import {IRouter, RoutersActions, RoutersActionTypes} from "../../types/reduxTypes/routers";
 
-export const test: TDefaultAC =
-    (test: string) => (dispatch: Dispatch<RoutersActions>) => {
-        dispatch({ type: RoutersActionTypes.TEST, payload: '' });
+export const addNode: TDefaultAC =
+    (node: IRouter) => (dispatch: Dispatch<RoutersActions>) => {
+        dispatch({ type: RoutersActionTypes.ADD_NODE, payload: node });
     }
